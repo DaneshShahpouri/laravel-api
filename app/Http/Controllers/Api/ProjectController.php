@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 
 class ProjectController extends Controller
 {
-    public function getProjects()
+    public function index()
     {
 
         $projects = Project::with('type', 'technologies')->get();
