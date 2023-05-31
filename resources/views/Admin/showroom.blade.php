@@ -133,7 +133,6 @@
     </div>
 
 
-
     <script>
         //------------------------------
         // Dati di configurazione
@@ -359,7 +358,6 @@
                 }
         }
 
-       
         // TOP
         function creaContenutoTop(contatore) {
             //my containerpre - il main
@@ -614,7 +612,6 @@
             let cerchioHiddenTop=document.getElementById('cerchio-top-hidden')
             let cerchioHiddenBottom=document.getElementById('cerchio-bottom-hidden')
             let bg=document.getElementById('background')
-            let titles=document.querySelectorAll('.title')
 
                       
             switch (confArray[contatore][0]) {
@@ -1049,8 +1046,8 @@
                 if (isAnimated == false) {
                 
                     isAnimated = true;
-                    scrollElCenterDown(MainScrollableEl);
-                    scrollElBottomCenter(BottomScrollableEl);
+                    this.scrollElCenterDown(MainScrollableEl);
+                    this.scrollElBottomCenter(BottomScrollableEl);
                     let timer = setTimeout(() => {
                         isAnimated = false
                     }, 2200)
