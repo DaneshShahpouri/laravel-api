@@ -26,6 +26,7 @@ class ProjectSeeder extends Seeder
             $project->year = $faker->year('now');
             // $project->thumb = $faker->imageUrl(640, 480, null, true, 'ciao', true, 'png');
             $project->slug = Str::slug($project->title, '-');
+            $project->is_important = false;
 
             $project->save();
         }

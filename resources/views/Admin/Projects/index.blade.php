@@ -43,6 +43,7 @@
                         <h5 class="p-1">{{$project->type->name ?? 'Nessuna'}}</h5>
                         <h5 class="card-title py-2 text-center">{{$project->title}}</h5>
                         <p class="card-text px-4 py-2">{{$project->description}}</p>
+                        <p class="card-text px-4 py-2">{{$project->is_important ? 'Importante' : 'non importante'}}</p>
                         <div class="description w-100 d-flex">
                             <h5 class="p-1">Tecnologie</h5>
                             @foreach($project->technologies as $technology)

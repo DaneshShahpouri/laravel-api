@@ -31,6 +31,16 @@
             @enderror
         </div>
 
+          {{-- is_important --}}
+          <div class="mb-3">
+            <label for="is_important">Preferiti</label>
+            <select name="is_important" id="is_important" class="w-100">
+                <option value="0">No</option>
+                <option value="1">Si</option>
+            </select>
+        </div>
+
+
        {{-- Immagine --}}
         <div class="mb-3">
             <label for="cover_image">Immagine</label>
