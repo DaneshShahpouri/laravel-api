@@ -115,7 +115,7 @@ class ProjectController extends Controller
 
         $formData['slug'] = Str::slug($project->title, '-');
         $project->update($formData);
-
+        
 
         $project->save();
 

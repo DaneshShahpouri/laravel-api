@@ -8,6 +8,16 @@ use Illuminate\Http\Request;
 
 class ProjectController extends Controller
 {
+    public function home()
+    {
+        $projects = Project::with('type', 'technologies')->where('is_important', true)->get();
+        return response()->json([
+            'success' => true,
+            'results' => $projects
+        ]);
+    }
+
+
     public function index()
     {
 
@@ -18,6 +28,8 @@ class ProjectController extends Controller
             'results' => $projects
         ]);
     }
+
+
 
     public function show($slug)
     {

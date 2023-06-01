@@ -29,6 +29,16 @@
             @enderror
         </div>
 
+        {{-- colore --}}
+        <div class="mb-3">
+            <label for="layout_color">Colore</label>
+            <input type="color" class=" rounded @error('layout_color') is-invalid @enderror" name="layout_color" id="layout_color" class="form-control" value="{{old('layout_color') ?? ''}}">
+            @error('layout_color')
+            <div class="invalid-feedback">{{$message}}</div>
+            @enderror
+        </div>
+
+
         {{-- is_important --}}
         <div class="mb-3">
             <label for="is_important">Preferiti</label>
