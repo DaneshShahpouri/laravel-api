@@ -7,6 +7,7 @@
     @csrf
     @method('PUT')
 
+        {{-- title --}}
         <div class="mb-3">
             <label for="title">Titolo</label>
             <input class="form-control @error('title') is-invalid @enderror" type="text" name="title" id="title" value="{{old('title') ?? $project->title}}">
@@ -15,6 +16,7 @@
             @enderror
         </div>
 
+        {{-- Descrizione --}}
         <div class="mb-3">
             <label for="description">Descrizione</label>
             <input class="form-control @error('description') is-invalid @enderror" type="text" name="description" id="description" value="{{old('description') ?? $project->description}}">
@@ -23,6 +25,7 @@
             @enderror
         </div>
 
+        {{-- Anno --}}
         <div class="mb-3">
             <label for="year">Anno</label>
             <input class="form-control @error('year') is-invalid @enderror" type="number" name="year" id="year" value="{{old('year') ?? $project->year}}">
@@ -34,7 +37,7 @@
         {{-- colore --}}
         <div class="mb-3">
             <label for="layout_color">Colore</label>
-            <input type="color" class=" rounded @error('layout_color') is-invalid @enderror" name="layout_color" id="layout_color" class="form-control" value="{{old('layout_color') ?? ''}}">
+            <input type="color" class=" rounded @error('layout_color') is-invalid @enderror" name="layout_color" id="layout_color" class="form-control" value="{{old('layout_color') ?? $project->layout_color}}">
             @error('layout_color')
             <div class="invalid-feedback">{{$message}}</div>
             @enderror
@@ -44,21 +47,24 @@
           <div class="mb-3">
             <label for="is_important">Preferiti</label>
             <select name="is_important" id="is_important" class="w-100">
-                <option value="0">No</option>
-                <option value="1">Si</option>
+                <option value="0" {{($project->is_important=='0' ? 'selected' : '')}}>No</option>
+                <option value="1" {{($project->is_important=='1' ? 'selected' : '')}}>Si</option>
             </select>
         </div>
-
 
        {{-- Immagine --}}
         <div class="mb-3">
             <label for="cover_image">Immagine</label>
-            <input class="form-control @error('cover_image') is-invalid @enderror" type="file" name="cover_image" id="cover_image" >
+            <div class="cover_image_edit_wrapper">
+                <img src="{{($project->cover_image ? asset('storage/' . $project->cover_image) : '')}}" alt="">
+            </div>
+            <input class="form-control @error('cover_image') is-invalid @enderror" type="file" name="cover_image" id="cover_image">
             @error('cover_image')
             <div class="invalid-feedback">{{$message}}</div>
             @enderror
         </div>
 
+        {{-- Tipi --}}
         <div class="mb-3">
             <label for="type_id">Tipologia</label>
             <select name="type_id" id="type_id" class="w-100">
@@ -69,7 +75,7 @@
             </select>
         </div>
 
-        
+        {{-- technologies --}}
         <div class="mb-3 form-group">
             @foreach ($technologies as $technology)
             <div class="form-check">

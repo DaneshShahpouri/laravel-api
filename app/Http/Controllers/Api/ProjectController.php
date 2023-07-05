@@ -20,7 +20,6 @@ class ProjectController extends Controller
 
     public function index()
     {
-
         $projects = Project::with('type', 'technologies')->get();
 
         return response()->json([
@@ -33,7 +32,7 @@ class ProjectController extends Controller
 
     public function show($slug)
     {
-        $projects = Project::where('slug', $slug)->first();
+        $projects = Project::with('type', 'technologies')->where('slug', $slug)->first();
 
         if ($projects) {
             return response()->json([

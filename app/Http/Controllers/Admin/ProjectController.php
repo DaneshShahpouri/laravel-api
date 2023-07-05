@@ -114,16 +114,17 @@ class ProjectController extends Controller
         }
 
         $formData['slug'] = Str::slug($project->title, '-');
-        $project->update($formData);
-        
 
+
+        $project->update($formData);
         $project->save();
 
         if (array_key_exists('technology', $formData)) {
             $project->technologies()->sync($formData['technology']);
         } else {
-            $project->technologies->detach();
+            $project->technologies()->detach();
         }
+
 
         return redirect()->route('admin.projects.show', $project->slug);
     }
@@ -155,7 +156,7 @@ class ProjectController extends Controller
             'title' => 'required|unique:projects,id|max:150',
             'description' => 'required',
             'year' => 'nullable|max:4',
-            'type_id' => 'nullable|exists:projects,id',
+            // 'type_id' => 'nullable|exists:projects,id',
             'cover_image' => 'nullable|image|max:2096'
         ], [
             'title.required' => "Titolo necessario per continuare",
