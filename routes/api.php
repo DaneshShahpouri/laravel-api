@@ -2,7 +2,7 @@
 
 
 use App\Http\Controllers\Api\ProjectController;
-use App\Http\Controllers\Api\InvioEmailController;
+use App\Http\Controllers\Api\MessageController;
 use App\Models\Project;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Artisan;
@@ -29,4 +29,4 @@ Route::get('projects', [ProjectController::class, 'index']);
 
 Route::get('projects/{slug}', [ProjectController::class, 'show']);
 
-Route::post('invia-email', [InvioEmailController::class, 'inviaEmail']);
+Route::post('messages/store', [MessageController::class, 'store']);
